@@ -51,16 +51,6 @@ class Board
     self.class.new(duped_rows)
   end
 
-  def empty_board?
-    @rows.each_with_index do |row, row_number|
-      row.each_with_index do |col, col_number|
-        return false unless empty?([row_number, col_number])
-      end
-    end
-
-    true
-  end
-
   def get_empty_positions
     empty_positions = []
     @rows.each_with_index do |row, row_number|
