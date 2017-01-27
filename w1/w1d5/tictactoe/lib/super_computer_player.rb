@@ -2,17 +2,11 @@ require_relative 'tic_tac_toe_node'
 
 class SuperComputerPlayer < ComputerPlayer
   def move(game, mark)
-    # build a new TTT node
     node = TicTacToeNode.new(game.board, mark)
-
-    # iterate through children of the node
-    # if any children are winning nodes, return that prev_move_pos
     children = node.children
+
     children.each do |child|
-      if child.winning_node?(mark)
-        # puts "winning move: #{mark} will move to #{child.prev_move_pos}"
-        return child.prev_move_pos
-      end
+      return child.prev_move_pos if child.winning_node?(mark)
     end
 
     children.reject! do |child|
@@ -22,7 +16,6 @@ class SuperComputerPlayer < ComputerPlayer
     if children.empty?
       raise "there are no non-losing nodes"
     else
-      # puts "no winning move: #{mark} will move randomly"
       return children.sample.prev_move_pos
     end
 
