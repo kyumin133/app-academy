@@ -19,4 +19,10 @@ class Deck
     @cards.shuffle!
   end
 
+  def draw
+    raise "Deck is empty" if @cards.empty?
+
+    @cards.pop
+  end
+
 end

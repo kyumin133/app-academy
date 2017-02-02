@@ -31,23 +31,37 @@ describe Deck do
   end
 
   describe "#shuffle" do
-    # let(:old_cards) { deck.cards.dup }
-    # before(:each) { deck.shuffle }
+    let(:old_cards) { deck.cards.dup }
 
     it "shuffles the array of cards" do
-      old_cards = deck.cards.dup
+      old_cards
       deck.shuffle
       expect(old_cards).not_to eq(deck.cards)
     end
 
     it "does not add or delete any cards" do
-      old_cards = deck.cards.dup
+      old_cards
       deck.shuffle
       expect(old_cards).to match_array(deck.cards)
     end
   end
 
-  describe "#draw"
+  describe "#draw" do
+    it "raises an error if deck is empty" do
+      deck.cards = []
+      expect { deck.draw }.to raise_error("Deck is empty")
+    end
+
+    it "removes a card from the deck" do
+      deck.draw
+      expect(deck.cards.length).to eq(51)
+    end
+
+    it "returns the removed card" do
+      old_cards = deck.cards.dup
+      expect(deck.draw).to be(old_cards.pop)
+    end
+  end
 
 
 end
