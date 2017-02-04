@@ -1,5 +1,6 @@
 require "byebug"
 class StaticArray
+  attr_reader :store
   def initialize(capacity)
     @store = Array.new(capacity)
   end
@@ -35,6 +36,7 @@ class DynamicArray
 
   def [](i)
     return nil if i >= capacity
+    # p @store.store
     return @store[i] if i >= 0
     return nil if i * -1 > @count
     # byebug
@@ -52,12 +54,27 @@ class DynamicArray
   def []=(i, val)
     resize! if i >= capacity
     if i >= 0
+      last_index = get_last_index[0]
+      last_index ||= -1
+
+      if i > last_index
+
+        ((last_index + 1)...i).each do |j|
+          @store[j] = nil
+          @count += 1
+        end
+        @count += 1
+        @store[i] = val
+      else
         @count += 1 if @store[i].nil?
         @store[i] = val
+      end
+
     else
       return nil if i * -1 > @count
       @store[get_last_index[0] + i + 1] = val
     end
+
   end
 
   def capacity
@@ -104,7 +121,7 @@ class DynamicArray
     # debugger
     first_index, first_value =  get_first_index
     return nil if first_index.nil?
-    ((first_index + 1)...capacity).each do |i|
+    (1...capacity).each do |i|
       @store[i - 1] = @store[i]
       @store[i] = nil
     end
@@ -133,13 +150,19 @@ class DynamicArray
     "[" + inject([]) { |acc, el| acc << el }.join(", ") + "]"
   end
 
+  # alias_method :eq, :==
+
   def ==(other)
+    # debugger if other == [nil, nil, 0]
     return false unless [Array, DynamicArray].include?(other.class)
 
-    return false if length != other.length
+    # puts "Count: #{@count}"
+    # puts "Other: #{other}"
+    return false if @count != other.length
 
-    other.each_with_index do |el, i|
-      return false if el != self[i]
+    (0...@count).each do |i|
+      # puts "El: #{self[i]}, other[i]: #{other[i]}"
+      return false if self[i] != other[i]
     end
 
     true
@@ -153,23 +176,28 @@ class DynamicArray
   def resize!
     new_capacity = capacity * 2
     new_store = StaticArray.new(new_capacity)
-    each_with_index do |el , i |
-      new_store[i] = el
+    (0...capacity).each do |i|
+      new_store[i] = @store[i]
     end
     @store = new_store
   end
-
+public
   def get_last_index
     last_value = nil
     last_index = nil
 
-    each_with_index do |el, i|
-      last_value = el
-      last_index = i
+    # each_with_index do |el, i|
+    #   last_value = el
+    #   last_index = i
+    # end
+    (capacity-1).downto(0) do |i|
+      unless self[i].nil?
+        return [i, self[i]]
+      end
     end
-
     [last_index, last_value]
   end
+
 
   def get_first_index
     (0...capacity).each do |i|
