@@ -1,0 +1,33 @@
+load "model_base.rb"
+load "users.rb"
+u = User.new('fname' => 'Ayn', 'lname' => 'Rand')
+u.save
+
+
+load "model_base.rb"
+load "questions.rb"
+q = Question.find_by_id(1)
+q.body = "isn't a raven like a writing desk?"
+q.save
+
+
+
+
+load "model_base.rb"
+load "questions.rb"
+q = Question.new("title" => "Bueller", "user_id" => 6, "body" => "Ferris?")
+q.save
+
+
+load "model_base.rb"
+Question.where("title" => "Bueller", "user_id" => 6)
+
+
+load "model_base.rb"
+load "users.rb"
+User.find_by_fname_and_lname("Clarissa", "Dalloway")
+
+
+load "model_base.rb"
+load "questions.rb"
+Question.where("title = 'Bueller' and user_id = 6")
