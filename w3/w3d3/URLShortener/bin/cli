@@ -1,0 +1,58 @@
+require "launchy"
+
+def get_user
+  user = nil
+  while user.nil?
+    puts "Input your email: "
+    print "> "
+    email = gets.chomp
+    user = User.find_by(email: email)
+  end
+  puts ""
+  user
+end
+
+def get_choice
+  choice = -1
+  until choice.between?(0, 1)
+    puts "What do you want to do?"
+    puts "0. Create shortened URL"
+    puts "1. Visit shortened URL"
+    print "> "
+    choice = gets.chomp.to_i
+  end
+  puts ""
+  choice
+end
+
+def make_choice(choice, user)
+  choice == 0 ? create_url(user) : visit_url(user)
+end
+
+def create_url(user)
+  puts "Type in your long url"
+  print "> "
+  long_url = gets.chomp
+  short_url = ShortenedUrl.generate_shortened_url(user, long_url).short_url
+  puts "\nShort url is: #{short_url}"
+end
+
+def visit_url(user)
+  shortened_url_obj = nil
+  while shortened_url_obj.nil?
+    puts "Type in the shortened URL"
+    print "> "
+    short_url = gets.chomp
+    shortened_url_obj = ShortenedUrl.find_by(short_url: short_url)
+  end
+
+  long_url = shortened_url_obj.long_url
+  puts "Launching #{long_url} ..."
+  Visit.record_visit!(user, shortened_url_obj)
+  Launchy.open(long_url)
+end
+
+user = get_user
+choice = get_choice
+make_choice(choice, user)
+puts "Goodbye!"
