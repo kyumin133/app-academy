@@ -1,0 +1,39 @@
+<h1><%= @cat.name %></h1>
+<table>
+  <tr>
+    <th>Birth Date</th>
+    <th>Color</th>
+    <th>Sex</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td><%= @cat.birth_date %></td>
+    <td><%= @cat.color %></td>
+    <td><%= @cat.sex %></td>
+    <td><%= @cat.description %></td>
+  </tr>
+
+</table>
+<br>
+<a href=<%= edit_cat_url%>>Edit</a>
+<br>
+<h2>Existing requests</h2>
+<table>
+  <tr>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Status</th>
+  </tr>
+  <% @cat.cat_rental_requests.order(:start_date).each do |request| %>
+    <tr>
+      <td><%= request.start_date %></td>
+      <td><%= request.end_date %></td>
+      <td><%= request.status %></td>
+      <% if request.pending? %>
+        <td><%= button_to "Approve", approve_cat_rental_request_url, method: :patch, params: {request_id: request.id} %></td>
+        <td><%= button_to "Deny", deny_cat_rental_request_url, method: :patch, params: {request_id: request.id} %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+<%= button_to "New Request", new_cat_rental_request_url, method: :get, params: {cat_id: @cat.id} %>

@@ -1,0 +1,14 @@
+<div>
+<h1 class="test">Our Cats &#x1F431;</h1>
+</div>
+
+<div>
+  <ul id="list">
+    <% @cats.each do |cat| %>
+      <li id="cat_list" class= <%= cat.color %>><a href='/cats/<%= cat.id %>'><%= cat.name %></li>
+    <% end %>
+    <li id="create_cat"><a href= <%= new_cat_url %> >Create cat</a></li>
+  </ul>
+
+
+</div>

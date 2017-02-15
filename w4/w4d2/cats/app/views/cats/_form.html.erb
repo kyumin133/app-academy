@@ -1,0 +1,44 @@
+<form name="cats" method="post" action="<%= action %>">
+  <h1><%= doing %> Cat</h1>
+  <% if cat.persisted? %>
+    <input type='hidden' name="_method" value="patch">
+  <% end %>
+  <%= @errors if @errors %>
+  <br>
+
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cats[name]" value='<%= cat.name %>'>
+
+  <br>
+
+  <label for="sex">Sex</label>
+  <input type="radio" value="M" name="cats[sex]" <%= cat.sex == "M" ? "checked" : "" %> > M
+  <input type="radio" value="F" name="cats[sex]" <%= cat.sex == "F" ? "checked" : "" %>> F
+
+  <br>
+
+  <label for="color">Color</label>
+  <select id="color" name="cats[color]">
+    <% if cat.color.nil? %>
+      <option disabled="true" selected="true">--Select Color--</option>
+    <% end %>
+
+    <% Cat::COLORS.each do |color| %>
+      <option value="<%= color %>" <%= cat.color == color ? "selected" : "" %>><%= color %></option>
+    <% end %>
+  </select>
+
+  <br>
+
+  <label for="birth_date">Birth date</label>
+  <input type="date" id="birth_date" name="cats[birth_date]" value='<%= cat.birth_date %>'>
+
+  <br>
+
+  <label for="description">Description</label>
+  <textarea id="description" name="cats[description]"><%= cat.description %></textarea>
+
+  <br>
+  <input type="submit">
+</form>
