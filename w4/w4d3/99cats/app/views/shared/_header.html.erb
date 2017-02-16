@@ -1,0 +1,9 @@
+
+  <% if session[:session_token]  %>
+  <h2><%= "Logged in as '#{current_user.user_name}'" %></h2>
+  <a href="<%=sessions_url%>"> See Sessions </a>
+  <%= button_to "Log Out", session_url, method: :delete%>
+  <% else %>
+  <h2><%= "Not Logged In" %></h2>
+  <%= button_to "Log In", new_session_url, method: :get %>
+  <% end %>
