@@ -1,0 +1,5 @@
+<h1>Log In</h1>
+<form action=" <%= session_url %>" method="post" class="form">
+  <%= render partial: "shared/form_auth" %>
+  <%= render "shared/user_form", action: "login"%>
+</form>

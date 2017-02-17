@@ -1,0 +1,13 @@
+<header>
+  <h1>
+    Ken's Music Site
+    <%= "(admin)".html_safe if logged_in? && current_admin?%>
+  </h1>
+  <% if logged_in? %>
+    <br>
+    <%= link_to "Profile", user_url(current_user.id) %>
+    <%= link_to "Bands", bands_url %>
+    <%= link_to "Users", users_url if current_admin? %>
+    <%= link_to "Log Out", session_url, {method: :delete, class: "logout"}%>
+  <% end %>
+</header>

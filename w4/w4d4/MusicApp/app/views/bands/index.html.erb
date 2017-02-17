@@ -1,0 +1,9 @@
+<h1>Band List</h1>
+<table class="center_table">
+  <% @bands.each do |band| %>
+  <tr><td class="center_td"><a href="<%=  band_url(band.id)%>"><%= band.name %></a></td></tr>
+  <% end %>
+  <% if current_admin? %>
+    <tr><td class="center_td"><a class="emoji_link" href="<%=  new_band_url%>"><%="\u{2795}"%></a></td><tr>
+  <% end %>
+</table>

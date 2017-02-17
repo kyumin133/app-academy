@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Email: </th>
+    <td><input type="text" name="user[email]"></td>
+  </tr>
+  <tr>
+    <th>Password: </th>
+    <td><input type="password" name="user[password]"></td>
+  </tr>
+  <tr>
+    <td><br></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <% if action == "login" %>
+        <input type="submit" value="Log In">
+        <%= link_to "Register", new_user_url, class: "link_button" %>
+      <% else %>
+        <input type="submit" value="Register">
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br>

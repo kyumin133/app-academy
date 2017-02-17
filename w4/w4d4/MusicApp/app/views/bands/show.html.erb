@@ -1,0 +1,22 @@
+<h1 class="name"> <%= @band.name %> </h1>
+<% if current_admin? %>
+  <div class="emoji_div">
+    <%=  button_to "\u{1F4DD}", edit_band_url(@band.id), method: :get, class: :emoji_button%>
+    <%=  button_to "\u{274C}", band_url(@band.id), method: :delete, class: :emoji_button%>
+  </div>
+<% end %>
+
+<div class="center_div">
+  <h2>Albums:</h2>
+  <table class="center_table">
+    <% @band.albums.order(:name).each do |album| %>
+      <tr>
+        <td><a href="<%= album_url(album.id)%>"><%= album.name %></a></td>
+      </tr>
+    <% end %>
+    <tr>
+        <td><%= button_to "\u{2795}", new_album_url(band_id: @band.id), class: :emoji_button, method: :get if current_admin? %></td>
+    </tr>
+  </table>
+
+</div>

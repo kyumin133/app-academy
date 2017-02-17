@@ -1,0 +1,29 @@
+<h1> <%= @album.name %> </h1>
+<table class="center_table">
+  <tr>
+    <th><b>Band:</b></th>
+    <td><%= link_to @album.band.name, band_url(@album.band.id)%></td>
+  </tr>
+  <tr>
+    <th><b>Type:</b></th>
+    <td><%= @album.live_studio %></td>
+  </tr>
+</table>
+
+<% if current_admin? %>
+  <div class="emoji_div">
+    <%=  button_to "\u{1F4DD}", edit_album_url(@album.id), method: :get, class: :emoji_button%>
+    <%=  button_to "\u{274C}", album_url(@album.id), method: :delete, class: :emoji_button%>
+  </div>
+<% end %>
+<div class="center_div">
+  <h2>Tracks:</h2>
+  <table class="center_table">
+    <% @album.tracks.order(:name).each do |track| %>
+      <tr><td><a href="<%= track_url(track.id)%>"><%= track.name %></a></td></tr>
+    <% end %>
+    <tr><td><%= link_to "\u{2795}", new_track_url(album_id: @album.id), class: "emoji_link" if current_admin?%></td></tr>
+  </table>
+
+
+</div>

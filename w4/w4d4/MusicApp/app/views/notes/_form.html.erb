@@ -1,0 +1,9 @@
+<form action=" <%= action %>" method="post" class="form">
+  <%= render partial: "shared/form_auth" %>
+  <input type="hidden" name="_method" value="<%= method %>">
+  <div class="center_div">
+    <textarea class="center_textarea" name="note[text]" rows="8" cols="60"><%= note_text%></textarea>
+    <br>
+    <input type="submit">
+  </div>
+</form>

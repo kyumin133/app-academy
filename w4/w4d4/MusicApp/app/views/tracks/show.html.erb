@@ -1,0 +1,24 @@
+<h1> <%= @track.name %> </h1>
+<table class="center_table">
+  <tr>
+    <th><b>Band:</b></th>
+    <td><%= link_to @track.album.band.name, band_url(@track.album.band.id)%></td>
+  </tr>
+  <tr>
+    <th><b>Album:</b></th>
+    <td><%= link_to @track.album.name, album_url(@track.album.id)%></td>
+  </tr>
+  <tr>
+    <th><b>Type:</b></th>
+    <td><%= @track.bonus_regular %></td>
+  </tr>
+</table>
+
+<% if current_admin? %>
+  <div class="emoji_div">
+    <%=  button_to "\u{1F4DD}", edit_track_url(@track.id), method: :get, class: :emoji_button%>
+    <%=  button_to "\u{274C}", track_url(@track.id), method: :delete, class: :emoji_button%>
+  </div>
+<% end %>
+
+<%= render "notes/note", track: @track%>

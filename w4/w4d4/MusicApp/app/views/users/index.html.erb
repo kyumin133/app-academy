@@ -1,0 +1,20 @@
+<h1>User List</h1>
+<table class="center_table">
+  <tr>
+    <th><b>Email</b></th>
+    <th><b>Admin?</b></th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td class="center_td"><%= user.email %></td>
+      <td class="center_td"><%= user.admin ? "Yes" : "No" %></td>
+      <td>
+        <% if user.admin && user.id != current_user.id %>
+          <%= button_to "Revoke Privileges", user_toggle_admin_url(user_id: user.id), method: "post"%>
+        <% elsif user.id != current_user.id %>
+          <%= button_to "Grant Privileges", user_toggle_admin_url(user_id: user.id), method: "post"%>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</ul>

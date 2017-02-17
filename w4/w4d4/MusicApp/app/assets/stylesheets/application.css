@@ -1,0 +1,211 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  font-family: "Trebuchet MS";
+  margin: 0;
+}
+
+a:hover {
+  opacity: 0.5;
+}
+
+header {
+  background-color: rgb(220, 220, 255);
+  height: 45px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+
+}
+
+header h2 {
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+  font-weight: normal;
+
+}
+header a {
+  margin-left: 10px;
+}
+header a, .link_button {
+  padding:5px 15px;
+  background:rgb(220, 220, 220);
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: black;
+  font-weight: normal;
+  display: inline-block;
+}
+
+header input[type=submit] {
+  float: right;
+  display: inline;
+}
+
+header a:hover {
+  opacity: 0.5;
+}
+
+h1 {
+  text-align: center
+}
+
+input[type=submit] {
+    padding:5px 15px;
+    background:rgb(220, 220, 220);
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+input[type=submit]:hover {
+    opacity: 0.5
+}
+
+.link_button:hover {
+  opacity: 0.5
+}
+
+.form {
+  /*text-align: center*/
+}
+
+.form table {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.form table th {
+  text-align: right;
+  font-weight: normal;
+}
+
+.error {
+  color: red;
+}
+
+.message {
+  color: green;
+}
+
+.logout {
+  float: right;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.emoji_button {
+  border: none !important;
+  background: none !important;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  display: inline-block;
+  /*width: 50%;*/
+}
+
+.emoji_link {
+  text-decoration: none;
+}
+
+.emoji_link:hover {
+  opacity: 0.5;
+}
+
+.emoji_div {
+  width: 30%;
+  margin-top: 0;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+
+.button_to{
+  display: inline-block;
+}
+
+.name {
+  margin-bottom: 0;
+}
+
+.center_table {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.center_table th {
+  text-align: right;
+  font-weight: normal;
+}
+
+.center_div {
+  width: 50%;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: center;
+}
+
+.center_td {
+  text-align: center;
+}
+
+.center_textarea {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.lyrics {
+  text-align: left;
+}
+
+.notes_table {
+  margin-left:auto;
+  margin-right:auto;
+  border-collapse: collapse;
+  /*border: 1px solid black;*/
+
+}
+
+.notes_table tr {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.notes_table th {
+  /*border: 1px solid black;*/
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.notes_table td {
+  padding-left: 5px;
+  padding-right: 5px;
+}

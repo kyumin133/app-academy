@@ -1,0 +1,32 @@
+<% my_note = Note.find_by(user_id: current_user.id, track_id: track.id) %>
+<% my_note = Note.first if current_admin? %>
+<div class="center_div">
+  <h3>Notes:</h3>
+  <table class="notes_table">
+    <% track.notes.each do |note|%>
+      <tr>
+        <th><b><%= note.user.email%><b></th>
+        <td class="lyrics"><%= ugly_lyrics(note.text)%></td>
+        <% next if my_note.nil? %>
+        <% if my_note.id == note.id || current_admin?%>
+          <td>
+            <div class="emoji_div">
+              <%=  button_to "\u{1F4DD}", edit_note_url(track_id: track.id, id: my_note.id), method: :get, class: :emoji_button%>
+            </div>
+          </td>
+          <td>
+            <div class="emoji_div">
+              <%=  button_to "\u{274C}", note_url(track_id: track.id, id: my_note.id), method: :delete, class: :emoji_button%>
+            </div>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+  <% if my_note.nil? %>
+    <div class="center_div">
+      <%= link_to "\u{2795}", new_note_url(track_id: track.id), class: "emoji_link" %>
+    </div>
+  <% end %>
+
+</div>

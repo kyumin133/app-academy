@@ -1,0 +1,43 @@
+<form action=" <%= action %>" method="post" class="form">
+  <% album ||= nil %>
+  <%= render partial: "shared/form_auth" %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <table class="center_table">
+    <tr>
+      <th><b>Name:</b></th>
+      <td><input id="name" type="text" name="album[name]" value="<%= album.nil? ? "" : album.name%>"></td>
+    </tr>
+    <tr>
+      <th><b>Band:</b></th>
+      <td>
+        <select id="band" name="album[band_id]">
+          <% Band.all.order(:name).each do |band| %>
+          <option value="<%= band.id%>" <%= band.id.to_i == band_id.to_i ? "selected" : "" %>>
+            <%= band.name%>
+          </option>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <label for="live">Live</label>
+        <input type="radio" name="album[live_studio]" value="Live" id="live" <%= live_studio == "Live" ? "checked" : "" %>>
+        <label for="studio">Studio</label>
+        <input type="radio" name="album[live_studio]" value="Studio" id="studio" <%= live_studio == "Studio" ? "checked" : "" %>>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      </td>
+      <td>
+        <input type="submit">
+      </td>
+    </tr>
+  <br>
+</table>
+
+</form>

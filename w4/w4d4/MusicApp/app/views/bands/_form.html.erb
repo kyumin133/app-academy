@@ -1,0 +1,18 @@
+<form action=" <%= action %>" method="post" class="form">
+  <%= render partial: "shared/form_auth" %>
+  <input type="hidden" name="_method" value="<%= method %>">
+
+  <table>
+    <tr>
+      <th>Name: </th>
+      <td><input id="name" type="text" name="band[name]" value="<%= band.name unless band.nil?%>"></td>
+
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit">
+      </td>
+    </tr>
+  <table>
+</form>
