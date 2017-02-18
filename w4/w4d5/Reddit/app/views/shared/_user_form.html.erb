@@ -1,0 +1,22 @@
+<form action="<%= action %>" method="post">
+  <%= render "shared/form_auth" %>
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td><input type="text" name="user[username]"></td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" name="user[password]"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="<%=  action_name%>">
+      </td>
+      <% if action_name == "Log In" %>
+        <td><%= link_to "Register", new_user_url %></td>
+      <% end %>
+    </tr>
+  </table>
+</form>

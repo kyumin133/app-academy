@@ -1,0 +1,8 @@
+<%= link_to preserve_newline(comment.content), comment_url(comment.id) %> <span class="author"> - <%= comment.author.username %></span>
+<ul>
+  <% @all_comments[comment.id].each do |child| %>
+    <li>
+      <%= render "comments/comment", comment: child %>
+    </li>
+  <% end %>
+</ul>

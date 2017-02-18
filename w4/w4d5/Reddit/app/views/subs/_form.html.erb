@@ -1,0 +1,22 @@
+<form action="<%= action %>" method="post">
+  <%= render "shared/form_auth" %>
+  <% unless subreddit.nil? %>
+    <input type='hidden' name="_method" value="patch">
+  <% end %>
+  <table>
+    <tr>
+      <td>Title:</td>
+      <td><input type="text" name="sub[title]" value="<%=  subreddit.title unless subreddit.nil?%>"</td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><textarea name="sub[description]" cols=60 rows=10><%= subreddit.description unless subreddit.nil?%></textarea></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="Save">
+      </td>
+    </tr>
+  </table>
+</form>

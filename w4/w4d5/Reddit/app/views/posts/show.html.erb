@@ -1,0 +1,49 @@
+<h1><%=  @post.title%></h1>
+<table>
+  <tr>
+    <th>Author:</th>
+    <td><%= @post.author.username%></td>
+  </tr>
+  <tr>
+    <th>Title:</th>
+    <td><%=  @post.title%></td>
+  </tr>
+  <tr>
+    <th>URL:</th>
+    <td><%=  @post.url%></td>
+  </tr>
+  <tr>
+    <th>Content:</th>
+    <td><%=  preserve_newline(@post.content)%></td>
+  </tr>
+  <tr>
+    <th>Subs:</th>
+    <td>
+      <ul>
+        <% @post.subs.each do |sub| %>
+          <li>
+            <%= link_to sub.title, sub_url(id: sub.id) %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+<% if @post.author_id == current_user.id %>
+  <%= link_to "Edit", edit_post_url(id: @post.id) %>
+  <%= link_to "Delete", post_url(id: @post.id), method: :delete%>
+<% end %>
+
+
+<h2>Comments</h2>
+<ul>
+  <% @all_comments[nil].each do |comment| %>
+    <li>
+      <%= render "comments/comment", comment: comment %>
+    </li>
+  <% end %>
+
+</ul>
+<%= link_to "New Comment", new_comment_url(post_id: @post.id) %>

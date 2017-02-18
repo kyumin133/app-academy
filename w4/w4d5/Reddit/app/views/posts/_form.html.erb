@@ -1,0 +1,35 @@
+<form action="<%= action %>" method="post">
+  <%= render "shared/form_auth" %>
+  <% unless post.nil? %>
+    <input type='hidden' name="_method" value="patch">
+  <% end %>
+  <table>
+    <tr>
+      <td>Title (required):</td>
+      <td><input type="text" name="post[title]" value="<%=  post.title unless post.nil?%>"</td>
+    </tr>
+    <tr>
+      <td>Url (optional):</td>
+      <td><input type="text" name="post[url]" value="<%=  post.url unless post.nil?%>"</td>
+    </tr>
+    <tr>
+      <td>Content (optional):</td>
+      <td><textarea name="post[content]" cols=40 rows=5><%= post.content unless post.nil?%></textarea></td>
+    </tr>
+    <tr>
+      <td>Subs (required):</td>
+      <td>
+        <% Sub.all.order(:title).each do |sub| %>
+          <%= check_box_tag "post[sub_ids][]", sub.id, sub_ids.include?(sub.id)%>
+            <%=  sub.title%>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <input type="submit" value="Save">
+      </td>
+    </tr>
+  </table>
+</form>

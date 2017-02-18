@@ -1,0 +1,18 @@
+<h2>Subs: </h2>
+<table>
+  <% Sub.all.order(:title).each do |subreddit| %>
+    <tr>
+      <td>
+        <%= link_to subreddit.title, sub_url(id: subreddit.id) %>
+      </td>
+    </tr>
+  <% end%>
+  <tr>
+    <td><br></td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to "Add Sub", new_sub_url %>
+    </td>
+  </tr>
+</table>

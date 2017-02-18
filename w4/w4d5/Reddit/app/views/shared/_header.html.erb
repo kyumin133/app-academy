@@ -1,0 +1,5 @@
+<% if logged_in? %>
+  Logged in as <b><%= current_user.username %></b>.
+  <%= button_to "Log out", session_url(id: current_user.id), method: :delete %>
+  <%= link_to "Subs", subs_url %>
+<% end %>
