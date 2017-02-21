@@ -1,13 +1,13 @@
 <h1><%=@user.username%></h1>
-<ul>
 
 <h2>Goals</h2>
+<ul class="my_ul">
 <% @user.goals.each do |goal| %>
 <% if goal.private == false || @user == current_user %>
 <li><%= link_to goal.name, goal_url(goal) %>
   <% if @user == current_user %>
-  <%= button_to "Edit Goal", edit_goal_url(goal), method: :get%>
-  <%= button_to "Delete Goal", goal_url(goal), method: :delete%>
+  <%= link_to "\u{1F4DD}", edit_goal_url(goal), method: :get, class: "emoji_button"%>
+  <%= link_to "\u{274C}", goal_url(goal), method: :delete, class: "emoji_button"%>
   <% end %>
 </li>
 <% end %>

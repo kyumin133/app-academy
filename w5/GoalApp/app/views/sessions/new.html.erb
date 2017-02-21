@@ -2,14 +2,22 @@
 
 <form action="<%= session_url%>" method="post">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <table class="userform">
 
-  <label for="Username">Username</label>
-  <input id="Username" type="text" name="user[username]" value="">
+    <tr>
+      <th><label for="Username">Username</label></th>
+      <td><input id="Username" type="text" name="user[username]" value=""></td>
+    </tr>
+<br>
+  <tr>
 
+  <th><label for="Password">Password</label></th>
+  <td><input id="Password" type="password" name="user[password]" value=""></td>
+</tr>
+  <tr>
+    <td></td>
+    <td><input type="submit" value="Login" id="Login"></td>
 
-  <label for="Password">Password</label>
-  <input id="Password" type="password" name="user[password]" value="">
-
-  <input type="submit" value="Login" id="Login">
-
+</tr>
+</table>
 </form>

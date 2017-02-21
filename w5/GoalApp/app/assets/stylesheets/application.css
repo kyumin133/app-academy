@@ -13,3 +13,49 @@
  *= require_tree .
  *= require_self
  */
+
+.error {
+  color:red;
+  text-align: center;
+}
+
+body {
+  font-family: sans-serif;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: justify;
+}
+
+.userform {
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.userform th {
+  text-align: right;
+}
+
+.centerdiv {
+  margin-left: auto;
+  margin-right: auto;
+  width: 5%;
+}
+
+.emoji_button {
+  text-decoration: none
+}
+
+.my_ul {
+  list-style: none;
+}
+.my_ul li:before {
+  content: "\1F945";
+  margin: 1em;
+}

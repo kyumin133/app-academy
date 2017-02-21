@@ -1,6 +1,6 @@
 
 
 <% if current_user  %>
-<%= current_user.username%>
-<%= button_to "Logout", session_url, method: :delete %>
+<h1><%= current_user.username%></h1>
+<div class="centerdiv"><%= button_to "Logout", session_url, method: :delete%></div>
 <% end %>
