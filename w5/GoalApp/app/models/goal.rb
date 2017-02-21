@@ -16,5 +16,8 @@ class Goal < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :comments
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :goal_id,
+    class_name: :GoalComment
 end

@@ -1,7 +1,4 @@
 class UsercommentsController < ApplicationController
-
-
-
   def create
     @usercomment = UserComment.new(usercomment_params)
     flash.now[:errors] = @usercomment.errors.full_messages unless @usercomment.save
