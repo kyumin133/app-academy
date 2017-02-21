@@ -1,9 +1,38 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  cheers          :integer          default("12"), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
   validates :username, :password_digest, :session_token, :cheers, presence: true
   validates :username, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
+  has_many :user_page_comments,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :UserComment
+
+  has_many :user_author_comments,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :UserComment
+
+  has_many :goal_page_comments,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :GoalComment
+
   has_many :comments
+
   has_many :goals
 
   attr_reader :password

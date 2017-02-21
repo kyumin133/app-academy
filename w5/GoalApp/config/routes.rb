@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :goals, only: [:new, :create, :edit, :update, :destroy, :show, :index]
+
+  resources :usercomments, only: [:create]
 end

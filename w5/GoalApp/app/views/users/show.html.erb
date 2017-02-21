@@ -14,5 +14,22 @@
 <% end %>
 
 </ul>
-
 <%= link_to "Add Goal", new_goal_url %>
+
+<h2>Comments</h2>
+
+<ul>
+<% @user.user_page_comments.each do |comment| %>
+  <li><%= comment.comment %> - <%= comment.author.username %></li>
+<% end %>
+
+</ul>
+
+<form action="<%=usercomments_url%>" method="post">
+  <input type="hidden" name="usercomment[user_id]" value="<%=@user.id%>">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+
+  <textarea id="Comment" name="usercomment[comment]" rows="8" cols="80"></textarea>
+
+  <input type="submit" value="Add Comment">
+</form>
