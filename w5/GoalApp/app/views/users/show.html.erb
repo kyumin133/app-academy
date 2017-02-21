@@ -19,17 +19,18 @@
 <h2>Comments</h2>
 
 <ul>
-<% @user.user_page_comments.each do |comment| %>
+<% @user.comments.each do |comment| %>
   <li><%= comment.comment %> - <%= comment.author.username %></li>
 <% end %>
 
 </ul>
 
-<form action="<%=usercomments_url%>" method="post">
-  <input type="hidden" name="usercomment[user_id]" value="<%=@user.id%>">
+<form action="<%=comments_url%>" method="post">
+  <input type="hidden" name="comment[commentable_type]" value="User">
+  <input type="hidden" name="comment[commentable_id]" value="<%=@user.id%>">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
-  <textarea id="Comment" name="usercomment[comment]" rows="8" cols="80"></textarea>
+  <textarea id="Comment" name="comment[comment]" rows="8" cols="80"></textarea>
 
   <input type="submit" value="Add Comment">
 </form>

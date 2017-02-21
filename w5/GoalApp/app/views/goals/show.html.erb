@@ -7,11 +7,12 @@
 </ul>
 
 
-<form action="<%=goalcomments_url%>" method="post">
-  <input type="hidden" name="goalcomment[goal_id]" value="<%=@goal.id%>">
+<form action="<%=comments_url%>" method="post">
+  <input type="hidden" name="comment[commentable_type]" value="Goal">
+  <input type="hidden" name="comment[commentable_id]" value="<%=@goal.id%>">
   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
 
-  <textarea id="Comment" name="goalcomment[comment]" rows="8" cols="80"></textarea>
+  <textarea id="Comment" name="comment[comment]" rows="8" cols="80"></textarea>
 
   <input type="submit" value="Add Comment">
 </form>

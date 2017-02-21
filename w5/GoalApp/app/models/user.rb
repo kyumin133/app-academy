@@ -16,22 +16,27 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
 
-  has_many :user_page_comments,
-    primary_key: :id,
-    foreign_key: :user_id,
-    class_name: :UserComment
+  has_many :comments, as: :commentable
 
-  has_many :user_author_comments,
+  has_many :authored_comments,
     primary_key: :id,
     foreign_key: :author_id,
-    class_name: :UserComment
+    class_name: :Comment
 
-  has_many :goal_page_comments,
-    primary_key: :id,
-    foreign_key: :author_id,
-    class_name: :GoalComment
-
-  has_many :comments
+  # has_many :user_page_comments,
+  #   primary_key: :id,
+  #   foreign_key: :user_id,
+  #   class_name: :UserComment
+  #
+  # has_many :user_author_comments,
+  #   primary_key: :id,
+  #   foreign_key: :author_id,
+  #   class_name: :UserComment
+  #
+  # has_many :goal_page_comments,
+  #   primary_key: :id,
+  #   foreign_key: :author_id,
+  #   class_name: :GoalComment
 
   has_many :goals
 

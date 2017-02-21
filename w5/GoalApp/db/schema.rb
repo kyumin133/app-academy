@@ -11,21 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220234214) do
+ActiveRecord::Schema.define(version: 20170221004503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "goal_comments", force: :cascade do |t|
-    t.integer  "goal_id",    null: false
-    t.text     "comment",    null: false
-    t.integer  "author_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "comments", force: :cascade do |t|
+    t.text     "comment",          null: false
+    t.integer  "author_id",        null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
-  add_index "goal_comments", ["author_id"], name: "index_goal_comments_on_author_id", using: :btree
-  add_index "goal_comments", ["goal_id"], name: "index_goal_comments_on_goal_id", using: :btree
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
 
   create_table "goals", force: :cascade do |t|
     t.string   "name",                       null: false
@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 20170220234214) do
   end
 
   add_index "goals", ["user_id"], name: "index_goals_on_user_id", using: :btree
-
-  create_table "user_comments", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.text     "comment",    null: false
-    t.integer  "author_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "user_comments", ["author_id"], name: "index_user_comments_on_author_id", using: :btree
-  add_index "user_comments", ["user_id"], name: "index_user_comments_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                     null: false
