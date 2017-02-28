@@ -1,0 +1,17 @@
+.board {
+  border: 5px solid black;
+  width: 500px;
+  height: 500px;
+  padding: 0 0;
+  list-style-type: none;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.snake-tile {
+  background-color: green;
+}

@@ -1,0 +1,74 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 70px;
+}
+
+.hanoi {
+  width: 650px;
+  margin: 0 auto;
+}
+
+.tower {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  border-bottom: 10px solid black;
+  float: left;
+  padding: 5px 0;
+  margin: 5px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.tower:hover {
+  border-bottom-color: blue;
+}
+
+.disk {
+  list-style-type: none;
+  line-height: 30px;
+  background-color: gray;
+  margin: 2px 0 2px 0;
+  color: gray;
+  border-radius: 15px;
+}
+
+.disk-1 {
+  width: 20%;
+}
+
+.disk-2 {
+  width: 40%;
+}
+
+.disk-3 {
+  width: 60%;
+}
+
+.disabled-disk {
+  color: rgb(0, 200, 0);
+  background-color: rgb(0, 200, 0);
+}
+
+.clicked {
+  border-bottom-color: red;
+}
+
+.clicked:hover {
+  border-bottom-color: red;
+}
+
+.disabled-tower {
+  cursor: default;
+}
+
+.disabled-tower:hover {
+  border-bottom-color: black;
+}
