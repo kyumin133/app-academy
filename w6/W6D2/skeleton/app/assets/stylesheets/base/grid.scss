@@ -1,0 +1,68 @@
+.grid {
+  // ...
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  margin-top: 20px;
+  // background-color: blue;
+}
+
+/* Attribute selector targeting all elements
+with a class attribute containing 'col-' */
+[class*='col-'] {
+  // ...
+  font-family: $serif;
+  vertical-align: top;
+  display: flex;
+  flex-direction: column;
+  padding-right: 2%;
+}
+
+[class*='col-']:last-of-type {
+  padding-right: 0;
+  // ...
+}
+.col-left {
+  width: 20%;
+}
+
+.col-middle {
+  width: 45%;
+  // display: inline-block;
+}
+
+.col-right {
+  width: 35%;
+  // background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.opinion-split {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.opinion-left {
+  display: flex;
+  width: 45%;
+  flex-direction: column;
+  padding-right: 5%;
+  // background-color: green;
+}
+.opinion-right {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  // background-color: blue;
+}
+
+@media all and (max-width: 1000px) {
+  [class*='col-'] {
+    width: 100%;
+    // display: block;
+  }
+  .grid {
+    display: block;
+  }
+}
