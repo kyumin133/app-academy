@@ -1,0 +1,158 @@
+body {
+  font-family: "Overpass";
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.instructions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.game {
+  margin: 0 auto;
+  width: 50%;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.row {
+  /*display: inline-block;*/
+  margin: 0;
+  padding: 0;
+  height: 30px;
+}
+
+.tile {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+  display: inline-block;
+  border-width: 1px;
+  border-color: white;
+  border-style: outset;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+
+  background-color: rgb(220, 220, 220);
+  border-top-color: rgb(245, 245, 245);
+  border-left-color: rgb(245, 245, 245);
+  border-bottom-color: rgb(210, 210, 210);
+  border-right-color: rgb(210, 210, 210);
+}
+
+
+.tile.explored {
+  margin: 0;
+  border-top-color: rgb(210, 210, 210);
+  border-left-color: rgb(210, 210, 210);
+  border-bottom-color: rgb(245, 245, 245);
+  border-right-color: rgb(245, 245, 245);
+  border-style: inset;
+}
+
+.tile.unexplored:hover {
+  cursor: pointer;
+}
+
+.tile.explored:hover {
+  cursor: default;
+}
+
+.tile.bombed {
+  background-color: rgb(200, 0, 0);
+}
+
+/*border-style: outset;*/
+
+.tile.hidden {
+
+  color: rgb(220, 220, 220);
+}
+
+.tile-1 {
+  color: rgb(0, 0, 255);
+}
+
+.tile-2 {
+  color: rgb(0, 155, 0);
+}
+
+.tile-3 {
+  color: rgb(155, 0, 0);
+}
+
+.tile-4 {
+  color: rgb(0, 0, 155);
+}
+
+.tile-5 {
+  color: rgb(100, 0, 0);
+
+}
+
+.tile-6 {
+  color: rgb(0, 100, 100);
+}
+
+.tile-7 {
+  color: rgb(0, 0, 0);
+}
+
+.tile-8 {
+  color: rgb(100, 100, 100);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-msg {
+  position: absolute;
+  z-index: 1000;
+  top: 30%;
+  left: 50%;
+  width: 400px;
+  padding: 50px;
+  margin-left: -250px;
+  transform: translateY(-50%);
+  background: white;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-msg p {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.modal-msg button {
+  /*margin-top: 10px;*/
+  display: flex;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 3px;
+}
