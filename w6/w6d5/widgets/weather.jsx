@@ -61,10 +61,10 @@ class Weather extends React.Component {
                     </tr>
                     <tr>
                       <th>
-                        Time:
+                        Temperature:
                       </th>
                       <td>
-                        {this.state.weather.temp}
+                        {this.state.weather.temp}&#xb0; F
                       </td>
                     </tr>
                   </tbody>

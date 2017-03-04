@@ -20,10 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let names = ["Andy", "Ann", "April", "Ben", "Chris", "Donna", "Jerry", "Leslie", "Ron", "Tom"]
 	ReactDOM.render(
-    <div>
-      <Tabs data={data}/>
-      <Clock/>
-      <Weather/>
-      <AutoComplete names={names}/>
+    <div className="grid">
+      <div className="col left-col">
+        <Clock/>
+        <Weather/>
+      </div>
+      <div className="col mid-col">
+        <Tabs data={data}/>
+      </div>
+      <div className="col right-col">
+        <AutoComplete names={names}/>
+      </div>
     </div>, root);
 });
