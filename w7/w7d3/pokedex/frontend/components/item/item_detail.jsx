@@ -10,10 +10,10 @@ class ItemDetail extends React.Component {
 
     if (item !== undefined) {
       return  <div>
-                <ul>
+                <ul className = "item-detail-list">
                   <li>{item.name}</li>
-                  <li>{item.happiness}</li>
-                  <li>{item.price}</li>
+                  <li>Happiness: {item.happiness}</li>
+                  <li>Price: ${item.price}</li>
                 </ul>
               </div>;
     } else {

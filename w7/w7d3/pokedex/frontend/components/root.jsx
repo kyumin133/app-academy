@@ -4,6 +4,7 @@ import { Router, Route, hashHistory } from 'react-router';
 import PokemonIndexContainer from './pokemon/pokemon_index_container';
 import PokemonDetailContainer from './pokemonDetail/pokemon_detail_container';
 import ItemDetailContainer from './item/item_detail_container';
+import PokemonFormContainer from './pokemon/pokemon_form_container';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -12,6 +13,7 @@ const Root = ({ store }) => (
         <Route path="pokemon/:pokemonId" component={ PokemonDetailContainer }>
           <Route path="item/:itemId" component={ItemDetailContainer} />
         </Route>
+        <Route path="new" component={PokemonFormContainer} />
       </Route>
     </Router>
   </Provider>

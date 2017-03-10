@@ -4,7 +4,8 @@ import PokemonDetail from './pokemon_detail';
 
 const mapStateToProps = state => {
   return{
-  pokemonDetail: state.pokemonDetail
+    pokemonDetail: state.pokemonDetail,
+    loading: state.loading
 };};
 
 const mapDispatchToProps = dispatch => {

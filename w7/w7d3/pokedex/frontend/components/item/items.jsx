@@ -9,14 +9,15 @@ class Items extends React.Component {
   render () {
     let itemsArr = this.props.items.map((item) => {
       let item_url = `pokemon/${item.pokemon_id}/item/${item.id}`;
+      // console.log(item);
       return  <Link to={item_url} key={item.id}>
                 <li>
-                  {item.name}
+                  <img src={item.image_url} className="item-image"/>
                 </li>
               </Link>;
     });
     return  <div>
-              <ul>{itemsArr}</ul>              
+              <ul className="items-list">{itemsArr}</ul>
             </div>;
   }
 }
